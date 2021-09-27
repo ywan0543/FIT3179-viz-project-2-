@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Popular destination in Australia Domestic from 2010 to 2019",
+    "width": 800,
+    "height": 600,
+    "data": {
+      "url": "https://ywan0543.github.io/FIT3179-viz-project-2-/SA4_2016_AUST.json",
+      "format": {"type": "topojson", "feature": "SA4_2016_AUST"}
+    },
+    
+    "transform": [
+      {
+        "lookup": "properties.SA4_NAME16",
+        "from": {
+          "data": {
+            "url": "https://ywan0543.github.io/FIT3179-viz-project-2-/Destination_count_new.csv"
+          },
+          "key": "Destination",
+          "fields": ["count"]
+        }
+      },
+      {"calculate": "datum.count + 0.1", "as": "count"}
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "count",
+        "type": "quantitative",
+        "scale": {"type": "log",
+        "domain": [100,200,400,1300],
+        "range": ["fof8ff","#b0e0e6", "87defa", "#4682b4", "1e90ff"]
+      }
+    },
+      "tooltip": [
+        {"field": "properties.SA4_NAME16", "type": "nominal", "title": "Destination"},
+        {"field": "count", "type": "quantitative"}
+      ]
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
