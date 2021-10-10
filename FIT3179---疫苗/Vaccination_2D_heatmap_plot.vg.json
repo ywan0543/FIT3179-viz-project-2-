@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "cleaned_data_2020_10_1.csv"},
+  "transform": [{
+    "filter": {"and": [
+      {"field": "Logged GDP per capita", "valid": true},
+      {"field": "% of population vaccinated", "valid": true}
+    ]}
+  }],
+  "mark": "rect",
+  "width": 300,
+  "height": 200,
+  "encoding": {
+    "x": {
+      "bin": {"maxbins":60},
+      "field": "Logged GDP per capita",
+      "type": "quantitative"
+    },
+    "y": {
+      "bin": {"maxbins": 40},
+      "field": "% of population vaccinated",
+      "type": "quantitative"
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

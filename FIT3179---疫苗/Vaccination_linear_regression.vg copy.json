@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Is a vaccinated country a happy one?",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "cleaned_data_2020_10_1.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Ladder score",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "% of population fully vaccinated",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "firebrick"
+      },
+      "transform": [
+        {
+          "regression": "% of population fully vaccinated",
+          "on": "Ladder score"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Ladder score",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "% of population fully vaccinated",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "% of population fully vaccinated",
+          "on": "Ladder score",
+          "params": true
+        },
+        {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+      ],
+      "mark": {
+        "type": "text",
+        "color": "firebrick",
+        "x": "width",
+        "align": "right",
+        "y": -5
+      },
+      "encoding": {
+        "text": {"type": "nominal", "field": "R2"}
+      }
+    }
+  ]
+}
