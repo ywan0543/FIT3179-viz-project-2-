@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            background-color: #D5E8FF;
+        }
+
+        main {
+            margin: 10px 15% 0 10%;
+            width: 80%;
+
+        }
+
+        h1 {
+            text-align: center;
+            font-size: calc(100vh/15);
+            font-family: 'Merriweather';
+            margin-bottom: "10px";
+            color: RGB(19,80,122);
+
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #7AB7FF;
+            font-family: 'Merriweather';
+            line-height: 4.5rem;
+            color: RGB(0,0,0);
+        }
+
+        h3 {
+            line-height: 2rem;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            overflow: auto;
+            margin: auto;
+        }
+
+        h4 {
+            line-height: 2rem;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: calc(100vh/33);
+            color: RGB(19,80,122);
+            text-align: center;
+            overflow: auto;
+            margin: auto;
+            
+        }
+
+        .part {
+            display: grid;
+            grid-template-columns: 68% 32%;
+            height: 435px;
+            /* align-items: center; */
+            align-self: center;
+        }
+
+        .content {
+            display: flex;
+            border: 0.5px solid #D5E8FF;
+            align-items: center;
+            border-radius: 10px;
+
+        }
+
+        section {
+            /* margin-top: 3%; */
+        }
+
+        strong {
+            color: #4472c4;
+            font-weight: bolder;
+        }
+
+
+        .background {
+            background-image: url('./pic.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <main>
+
+        <div class="title">
+            <h1>COVID-19 Vaccine Information</h1>
+
+        </div>
+
+
+
+        <section>
+            <h4>As of October 1, 2021, there have been more than 10 manufacturers producing COVID-19 vaccines, and the total number of people 
+                vaccinated globally has exceeded 3.5 billion, which is a considerable number. But the vaccination rate varies greatly from 
+                country to country. Why is that? Let's explore together.
+            </h4>
+            <h2>How many percentages of people are vaccinated in different countries?</h2>
+            <div class="part">
+                <div id="chor"></div>
+                <div class="content">
+
+
+                    <h3> According to this choropleth map, in most countries around the world, the percentage of the population vaccinated 
+                        in Canada, China, and Brazil exceeds 70%. At the same time, as of October 1,2021,<strong> Australia's vaccinated 
+                        rate has reached 65%.</strong> </h3>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- 2 -->
+        <section>
+            <h2>Which regions have the most of its population vaccinated?</h2>
+            <div class="part">
+                <div id="box"></div>
+                <div class="content">
+
+                    <h3> It can be seen form this plot that in <strong> East Asia and the Western European region</strong>, the
+                        vaccination rate is <strong> generally high</strong>, and the median of the two regions is over 70%.
+                        However,<strong> Sub-Saharan Africa has the lowest vaccination rate,</strong> with the highest value
+                        being less than 10%. The huge differences in the percentage of the population vaccinated in different 
+                        regions may be affected by the local economy and culture.</h3>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- 3 -->
+        <section>
+            <h2>Which manufacturers do Australia’s COVID-19 vaccines come from?</h2>
+            <div class="part">
+                <div id="bar"></div>
+                <div class="content">
+
+                    <h3> According to this stacked bar chart, <strong>as of October 2021, most of the vaccines vaccinated by
+                        Australian residents </strong> are produced by <strong> Pfizer/BioNTech,</strong> while the vaccine 
+                        produced by Johnson & Johnson is the least.
+
+                    </h3>
+                </div>
+            </div>
+            <h3>
+                It is understood from the above content that the vaccination rates of different countries are very different, and 
+                the vaccines vaccinated are also from different manufacturers. <strong> So what are the factors that affect it?</strong>
+            </h3>
+        </section>
+
+        <!-- 4 -->
+        <section>
+            <h2>Does a higher GDP mean a higher vaccinated population?</h2>
+            <div class="part">
+                <div id="scatter"></div>
+                <div class="content">
+
+                    <h3>According to this scatter plot, it can be concluded that there is a <strong>positive correlation</strong> between <strong>GDP
+                        per capita and percentage of population vaccinated</strong>. By examining Western European and North America and ANZ region 
+                        separately (filter these regions), <strong>the percentage of population vaccinated in developed countries exceeds 50%.</strong>
+                    </h3>
+                </div>
+            </div>
+
+        </section>
+        <!-- 5-->
+        <section>
+            <h2>Does a happier country mean a higher vaccinated population?</h2>
+            <div class="part">
+                <div id="line"></div>
+                <div class="content">
+
+                <h3>There is indeed a <strong> trend that shows that the higher a country is in the happines report ladder, the more people will be 
+                    vaccinated</strong> . Since R-squared is known to be 0.51, this model is not fit well. This may be because a happy country is 
+                    influenced by many factors, such as economic and social factors. However, that doesn't take out the fact that <strong> a happy 
+                    country is a vaccinated one.</strong>
+                </h3>
+            </div>
+            </div>
+
+        </section>
+
+
+        <div>
+            <h5>
+                The data is provided by Kaggle.
+            </h5>
+            <h5>
+                This visualization is designed by <a href="https://github.com/ywan0543">Yibo Wang.</a>
+            </h5>
+        </div>
+    </main>
+    <script type="text/javascript">
+        vegaEmbed("#bar", "vaccination_bar_chart.vg.json");
+        vegaEmbed("#box", "vaccination_box_plot.vg.json");
+        vegaEmbed("#chor", "Vaccination_choropleth_map_new3.vg.json");
+        vegaEmbed("#scatter", "Vaccination_interactive_scatter_plot.vg.json");
+        vegaEmbed("#line", "Vaccination_linear_regression_happy.vg.json");
+    </script>
+
+</body>
+
+</html>

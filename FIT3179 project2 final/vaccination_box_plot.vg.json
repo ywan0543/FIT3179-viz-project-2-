@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A vertical box plot showing median, min, and max body mass of penguins.",
+    "data": {"url": "https://ywan0543.github.io/FIT3179-viz-project-2-/enddata_2020_10_11_141.csv"},
+
+    "width": "container",
+    "height": 391,
+    "mark": {
+      "type": "boxplot",
+      "extent": "min-max",
+      "size": 30
+    },
+    "encoding": {
+      "y": {
+          "field": "Regional", 
+          "type": "nominal"
+          },
+      "x": {
+        "field": "% of population vaccinated",
+        "type": "quantitative",
+       "title":"Percentage of population vaccinated",
+        "scale": {"zero": false},
+        "axis": { "grid": false}
+      }
+      },
+      "tooltip": [
+        {"field": "Regional", "type": "nominal"},
+        {"field": "% of population vaccinated", "type": "quantitative", "title": "Country"}
+      ],
+      "config": {
+        "font": "Space Grotesk",
+        "axis": {
+            "labelFontSize": 10,
+            "titleFontSize": 13
+        },
+        "title": {
+            "anchor": "middle",
+            "fontSize": 16,
+            "font": "Segoe UI",
+            "fontWeight": 600
+        }
+  
+    }
+  }
+  
